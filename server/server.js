@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
-    credentials: true, //
+    credentials: true, // this is to allow the cookie to be sent back and forth
   })
 );
 app.use(express.json());

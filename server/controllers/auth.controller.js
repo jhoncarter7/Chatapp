@@ -2,7 +2,9 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from "../model/User.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
-const signUpUser = async (req, res) => {
+const signUpUser = async function(req, res, next) {
+  try {
+
   const {
     fullName,
     userName,
@@ -48,9 +50,16 @@ const signUpUser = async (req, res) => {
   }
 
   return res
-    .send(201)
+    .status(201)
     .json(new ApiResponse(200, createdUser, "User successfully created"));
+        
+  } catch (error) {
+    next(error)
+  }
 };
+
+
+
 
 const loginUser = async (req, res) => {
   res.send("login user");
