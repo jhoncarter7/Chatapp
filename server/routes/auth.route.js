@@ -5,7 +5,7 @@ import { signUpUser, loginUser, logoutUser} from '../controllers/auth.controller
 const route = Router();
 
 route.post('/signup', signUpUser)
-route.get('/login', loginUser)
+route.post('/login', loginUser)
 route.get('/logout', logoutUser)
 
 export default route;
