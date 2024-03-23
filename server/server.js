@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import authRoutes from "./routes/auth.route.js";
 import mongodbConnection from "./db/mongodb.db.js";
 import cors from "cors";
-
+import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js"
 //config
 dotenv.config();
 const app = express();
@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 
 //routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/message", messageRoutes);
 
 //server
 app.listen(port, () => {
