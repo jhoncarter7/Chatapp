@@ -4,6 +4,7 @@ import mongodbConnection from "./db/mongodb.db.js";
 import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js"
+import cookieParser from "cookie-parser";
 //config
 dotenv.config();
 const app = express();
@@ -17,6 +18,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser())
 app.get("/", (req, res) => {
   res.send("hello");
 });
