@@ -4,6 +4,7 @@ import mongodbConnection from "./db/mongodb.db.js";
 import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js"
+import userRoutes from "./routes/user.route.js"
 import cookieParser from "cookie-parser";
 //config
 dotenv.config();
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/message", messageRoutes);
-
+app.use("/api/v1/user", userRoutes)
 //server
 app.listen(port, () => {
   mongodbConnection();
