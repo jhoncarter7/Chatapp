@@ -7,7 +7,7 @@ const LogIn = () => {
           Login
           <span className="text-green-600">ChatApp</span>
         </h1>
-        <form action="" className="space-y-4">
+        <form action="" className="space-y-2">
           <div>
             <label className="label p-1">
               <span className="text-base label-text font-medium">Username</span>
@@ -15,7 +15,7 @@ const LogIn = () => {
             <input
               type="text"
               placeholder="Type UserName"
-              className="input input-bordered w-full  h-10"
+              className="input input-bordered w-full h-10 bg-slate-700"
             />
           </div>
           <div>
@@ -25,7 +25,7 @@ const LogIn = () => {
             <input
               type="text"
               placeholder="Type Password"
-              className="input input-bordered w-full  h-10"
+              className="input input-bordered w-full h-10 bg-slate-700"
             />
           </div>
 
@@ -33,7 +33,7 @@ const LogIn = () => {
            {"Don't"} have an account? Sign Up
           </a>
 
-          <button className="btn btn-block btn-sm">Login</button>
+          <button className="btn glass btn-block btn-md">Login</button>
         </form>
       </div>
     </div>
