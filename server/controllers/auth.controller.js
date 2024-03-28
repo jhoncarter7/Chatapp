@@ -89,7 +89,9 @@ const loginUser = async (req, res) => {
 
   const options = {
     httpOnly: true,
+    sameSite: "none",
     secure: true,
+
   };
   return res.status(200).cookie("accessToken", accessToken, options).json( new ApiResponse(200, {user: loggedinUser, accessToken}, "user is successfully loggedin" ));
 } catch (error) {
