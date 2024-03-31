@@ -9,7 +9,6 @@ const sendMessages = async (req, res) => {
     const { id: recevierId } = req.params;
     const senderId = req.user?._id;
 
-    console.log("message", message,"recevierId", recevierId, "senderId", senderId)
      if(!message || !recevierId || !senderId){
         console.log("message", message,"recevierId", recevierId, "senderId", senderId)
         throw new ApiError(400, "All fields are required");
