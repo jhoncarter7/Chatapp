@@ -51,10 +51,16 @@ try {
   }).populate("messages")
 
   if(!conversation){
-  res.status(200).json(new ApiResponse(200, [], "No messages found"))
+    return res.status(200).json(new ApiResponse(200, [], "No messages found"))
+
   }
 
-  const message = conversation.messages;
+  const message = conversation?.messages;
+
+  if(!message){
+    return res.status(200).json(new ApiResponse(200, [], "No messages found"))
+    
+  }
 
  return res.status(200).json(new ApiResponse(200, message, "Messages found"))
 

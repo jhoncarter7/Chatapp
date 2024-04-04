@@ -69,7 +69,7 @@ userSchema.methods.generateAccessToken = function(){
    },
    process.env.JWT_SECRET, // this should be outside the curly braces
    {
-    expiresIn: process.env.JWT_EXPIRES_IN
+    expiresIn:'2d',
    })
 }
 

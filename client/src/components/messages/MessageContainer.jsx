@@ -5,7 +5,7 @@ import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 const MessageContainer = () => {
   const {selectedConversation} = useConversation();
-  console.log(selectedConversation);
+ 
   return (
     <div className="md:min-w-[450px] flex flex-col">
       {!selectedConversation ? (
