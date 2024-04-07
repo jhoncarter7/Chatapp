@@ -1,3 +1,4 @@
+import useListenMessage from "../../Hooks/useListenMessage";
 import { useAuthcontext } from "../../context/authContext";
 import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand/useConversation";
@@ -5,6 +6,7 @@ import useConversation from "../../zustand/useConversation";
 
 const Message = ({message}) => {
   const {authUser} = useAuthcontext()
+  useListenMessage()
   const {selectedConversation} = useConversation()
 
   const fromMe = message.senderId ===  authUser.data.user?._id

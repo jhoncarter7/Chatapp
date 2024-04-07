@@ -1,5 +1,6 @@
 import Conversation from "../model/Conversation.model.js";
 import Message from "../model/Message.model.js";
+import { getRecevierSocletId, io } from "../socket/socket.js";
 import { ApiError } from "../utils/ApiError.js";
 import {ApiResponse} from "../utils/ApiResponse.js";
 
@@ -32,7 +33,15 @@ const sendMessages = async (req, res) => {
     if(newMessage){
      conversation.messages.push(newMessage._id)
     }
-   await conversation.save()
+
+    //this will save the conversation and the message parallel
+   await Promise.all([conversation.save(), newMessage.save()])
+   
+   const receiverSocketId = getRecevierSocletId(recevierId)
+    if(receiverSocketId){
+      //send the message to the specific client
+      io.to(receiverSocketId).emit("newMessage", newMessage)
+    }
 
     res.status(201).json(new ApiResponse(200, newMessage, "Message sent"));
   } catch (error) {
@@ -41,10 +50,12 @@ const sendMessages = async (req, res) => {
   }
 };
 
+
+
 const getMessages = async(req, res)=>{
-try {
-  const {id: userToChatId} = req.params;
-  const senderId = req.user?._id;
+  try {
+   const {id: userToChatId} = req.params;
+    const senderId = req.user?._id;
 
   const conversation =  await Conversation.findOne({
     participants: { $all: [senderId, userToChatId]}

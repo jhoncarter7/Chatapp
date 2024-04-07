@@ -12,6 +12,10 @@ cors: {
     methods: ["GET", "POST"]
 }
 })
+
+export const getRecevierSocletId = (receiverId)=> {
+    return useSocketMap[receiverId]
+}
 //useSocketMap is used to store the userId and socketId of all connected clients
 const useSocketMap = {}  // {userId: socketId}
 
