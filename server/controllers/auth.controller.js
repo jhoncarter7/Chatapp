@@ -89,9 +89,9 @@ const loginUser = async (req, res) => {
 
   const options = {
     httpOnly: true,
-    sameSite: "None",
-    secure: true,
-    maxAge: 60 * 60 * 48 * 1000,
+    sameSite: "Strict",
+    secure: process.env.NODE_ENV !== "development",
+    maxAge: 15 * 24 * 60 * 60 * 1000,
 
   };
   return res.status(200).cookie("accessToken", accessToken, options).json( new ApiResponse(200, {user: loggedinUser, accessToken}, "user is successfully loggedin" ));

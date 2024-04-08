@@ -7,11 +7,12 @@ import messageRoutes from "./routes/message.route.js"
 import userRoutes from "./routes/user.route.js"
 import cookieParser from "cookie-parser";
 import { app, server } from "./socket/socket.js";
+import path from 'path';
 //config
 dotenv.config();
 
 const port = process.env.PORT || 3000;
-
+const __dirname = path.resolve()
 //middleware
 app.use(
   cors({
@@ -29,6 +30,13 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/message", messageRoutes);
 app.use("/api/v1/user", userRoutes)
+
+app.use(express.static(path.join(__dirname, '/client/dist')))
+
+app.get('*', ()=> {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
+})
+
 //server
 server.listen(port, () => {
   mongodbConnection();
