@@ -15,9 +15,7 @@ const __dirname = path.resolve()
 //middleware
 app.use(express.json());
 app.use(cookieParser())
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+
 
 //routes
 app.use("/api/v1/auth", authRoutes);
