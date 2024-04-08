@@ -11,7 +11,7 @@ import path from 'path';
 //config
 dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const __dirname = path.resolve()
 //middleware
 app.use(
