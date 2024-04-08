@@ -14,12 +14,6 @@ dotenv.config();
 const port = process.env.PORT || 5000;
 const __dirname = path.resolve()
 //middleware
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true, // this is to allow the cookie to be sent back and forth
-  })
-);
 app.use(express.json());
 app.use(cookieParser())
 app.get("/", (req, res) => {
