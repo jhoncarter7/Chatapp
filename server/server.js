@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongodbConnection from "./db/mongodb.db.js";
-import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js"
 import userRoutes from "./routes/user.route.js"
@@ -11,7 +10,7 @@ import path from 'path';
 //config
 dotenv.config();
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve()
 //middleware
 app.use(express.json());
@@ -32,7 +31,7 @@ app.get('*', (req, res)=> {
 })
 
 //server
-server.listen(port, () => {
+server.listen(PORT, () => {
   mongodbConnection();
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${PORT}`);
 });
