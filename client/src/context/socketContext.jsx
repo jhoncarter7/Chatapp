@@ -12,13 +12,13 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const { authUser } = useAuthcontext();
-
+  console.log("authUser in socket", authUser);
 
   useEffect(() => {
     if (authUser) {
       const socket = io("https://mern-chatapp-daum.onrender.com/", {
         query: {
-          userId: authUser.data.user?._id,
+          userId: authUser.data?._id,
         },
       });
 
