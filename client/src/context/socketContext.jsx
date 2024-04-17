@@ -18,7 +18,7 @@ export const SocketContextProvider = ({ children }) => {
     if (authUser) {
       const socket = io("https://mern-chatapp-daum.onrender.com/", {
         query: {
-          userId: authUser.data?._id,
+          userId: authUser.data.user?._id,
         },
       });
 

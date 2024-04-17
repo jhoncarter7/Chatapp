@@ -62,7 +62,7 @@ const signUpUser = async function (req, res, next) {
     return res
       .status(201)
       .cookie("accessToken", accessToken, options)
-      .json(new ApiResponse(200, createdUser, "User successfully created"));
+      .json(new ApiResponse(200, {user: createdUser, accessToken}, "User successfully created"));
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
